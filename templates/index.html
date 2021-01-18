@@ -1,39 +1,43 @@
-{% load static %}
-{% load sudoku_extras %}
+{% load static %} {% load sudoku_extras %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Sudoku Solver</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
     <script src="{% static 'script/script.js' %}"></script>
-</head>
-<body>
-<div id="holder">
-    <h1>Sudoku Solver</h1>
+  </head>
+  <body>
+    <div id="holder">
+      <h1>Sudoku Solver</h1>
 
-    <form action="../sudoku/"
-          method="get">
+      <form action="../sudoku/" method="get">
         <table>
-            {% for c in "012345678" %}
-            <tr>
-                {% for l in "012345678" %}
-                <td>
-                    <input id="{{ l }}{{ c }}"
-                           type="text"
-                           name="{{ l }}{{ c }}"
-                           value="{{ values | line:l | column:c }}"
-                           class="square"
-                           maxlength="1"
-                           size="1">
-                </td>
-                {% endfor %}
-            </tr>
+          {% for c in "012345678" %}
+          <tr>
+            {% for l in "012345678" %}
+            <td>
+              <input
+                id="{{ l }}{{ c }}"
+                type="text"
+                name="{{ l }}{{ c }}"
+                value="{{ values | line:l | column:c }}"
+                class="square"
+                maxlength="1"
+                size="1"
+              />
+            </td>
             {% endfor %}
+          </tr>
+          {% endfor %}
         </table>
-    <input id="solve" type="submit" value="Solve">
-    <input id="clear" type="submit" onclick="clearSudoku()" value="Clear">
-    </form>
-</div>
-</body>
+        <input id="solve" type="submit" value="Solve" />
+        <input id="clear" type="submit" onclick="clearSudoku()" value="Clear" />
+      </form>
+    </div>
+  </body>
 </html>
